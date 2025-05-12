@@ -4,6 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+//Этот файл — юнит-тест. Он нужен, чтобы автоматически проверить,
+// правильно ли работает твой код, без необходимости вручную вызывать main и смотреть глазами.
+//Он использует библиотеку JUnit 5 — это популярный инструмент для тестирования Java-кода.
+
 public class BinarySearchTreeTest {
 
     private BinarySearchTree bst;
@@ -12,10 +16,14 @@ public class BinarySearchTreeTest {
     void setUp() {
         bst = new BinarySearchTree();
     }
+    //Вызывается перед каждым тестом.
+    //Каждый раз создаёт новое, чистое дерево.
+    //Это важно, чтобы тесты не мешали друг другу.
 
     @Test
     void testEmptyTreeLength() {
         assertEquals(0, bst.length(), "Empty tree should have length 0");
+//Проверяет: если дерево только что создано, его длина (кол-во узлов) — 0.
     }
 
     @Test
@@ -24,6 +32,9 @@ public class BinarySearchTreeTest {
         assertEquals(1, bst.length(), "Tree with one node should have length 1");
         bst.displayTree();
         //assertTrue(bst.contains(10), "Tree should contain inserted value");
+        //Вставляем один узел (10).
+        //Проверяем: длина дерева должна быть 1.
+        //displayTree() — визуально выводит дерево в консоль.
     }
 
     @Test
@@ -39,6 +50,8 @@ public class BinarySearchTreeTest {
             assertTrue(bst.contains(value), "Tree should contain all inserted values");
         }*/
     }
+    //Вставляем 7 значений.
+    //Проверяем, что размер дерева стал 7.
 
     @Test
     void testInsertDuplicateValues() {
@@ -47,6 +60,8 @@ public class BinarySearchTreeTest {
 
         assertEquals(1, bst.length(), "Tree should not increase size for duplicate inserts");
     }
+    //Проверяет: вставка одного и того же значения не увеличивает дерево.
+    //Обычно бинарное дерево поиска не допускает дубликаты.
 
     @Test
     void testGetNode() {
@@ -63,6 +78,8 @@ public class BinarySearchTreeTest {
 
         assertNull(bst.getNode(100), "getNode should return null for non-existing values");
     }
+    //Проверяет: метод getNode() находит нужный узел по значению.
+    //Также проверяется, что null возвращается для несуществующих значений.
 
     @Test
     void testMin() {
@@ -141,6 +158,12 @@ public class BinarySearchTreeTest {
         assertTrue(bst.contains(3), "Parent of removed node should still exist");
         assertTrue(bst.contains(4), "Sibling of removed node should still exist");
     }
+    //Проверяются разные ситуации удаления:
+    //Лист (без детей)
+    //Один ребёнок
+    //Два ребёнка
+    //Корень
+    //Несуществующий элемент
 
     @Test
     void testRemoveNodeWithOneChild() {
@@ -262,4 +285,6 @@ public class BinarySearchTreeTest {
         // Check length
         assertEquals(7, bst.length(), "Tree should have correct length after operations");
     }
+    //Комплексный тест: и вставка, и удаление, и поиск.
+    //Проверяется финальная структура дерева.
 }
