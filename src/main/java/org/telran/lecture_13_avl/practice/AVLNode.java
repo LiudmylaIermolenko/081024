@@ -51,7 +51,8 @@ public class AVLNode {
         return right;
     }
 
-    public void setRight(AVLNode right) {
+    public void setRight(AVLNode right)
+    {
         this.right = right;
     }
 }
