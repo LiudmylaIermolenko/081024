@@ -500,7 +500,6 @@ public class AvlTree {
         if (node == null || node.getValue() == value) {
             return node;
         }
-
         if (value < node.getValue()) {
             return searchRecursively(node.getLeft(), value);
         } else {
